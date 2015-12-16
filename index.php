@@ -23,16 +23,17 @@
 	<div class="container">
 
 		<?php if(have_posts()): ?>
-			<?php while(have_posts()): the_post(); ?>
+			<?php while(have_posts()): ?>
+				<?php the_post();  ?>
 
 				<article <?php  post_class();//記事に付加するクラス名を出力する  ?>>
 
-					<?php  if(is_single()):  ?>
+					<?php  if(is_single())://個別ページかどうかを判定する  ?>
 						<h1><?php  the_title();//記事のタイトルを出力する  ?></h1>
 					<?php  else:  ?>
 						<h1>
-							<a href="<?php the_permalink(); ?>">
-								<?php  the_title();  ?>
+							<a href="<?php the_permalink();///*個別ページへのＵＲＬを出力する*/ ?>">
+								<?php  the_title();//記事のタイトルを出力する  ?>
 							</a>
 						</h1>
 					<?php  endif;  ?>
@@ -52,45 +53,45 @@
 					<p><?php  the_content();//記事の本文を出力する  ?></p>
 
 					<?php  if(is_single())://シングルページかどうかを判定する  ?>
+						<!--シングルページの時のみ前後の記事へのリンクを出力するようにする-->
 						<div class="pagenav">
 							<span class="old">
-							<?php //前の記事へのリンクを表示るする
-							previous_post_link('%link',
-								'<i class="fa fa-chevron-circle-left"></i> %title');
-							?>
+								<?php //前の記事へのリンクを表示るする（引数が２つの場合）
+								previous_post_link('%link',
+									'<i class="fa fa-chevron-circle-left"></i> %title'); ?>
 							</span>
 							<span class="new">
-							<?php //後の記事へのリンクを表示する
-							next_post_link('%link',
-							'%title <i class="fa fa-chevron-circle-right"></i>');
-							?>
+								<?php //後の記事へのリンクを表示する（引数が2つの場合）
+								next_post_link('%link',
+									'%title <i class="fa fa-chevron-circle-right"></i>');
+								?>
 							</span>
 						</div>
 					<?php  endif;  ?>
 
-				</article>
+					</article>
 
-			<?php endwhile; ?>
-		<?php endif; ?>
+				<?php endwhile; ?>
+			<?php endif; ?>
 
-<?php   if( $wp_query->max_num_pages > 1): ?>
-	<div class="pagenav">
-		<span class="old">
-			<?php next_posts_link('古い記事'); ?>
-		</span>
+			<?php   if( $wp_query->max_num_pages > 1)://記事が複数ページあるかどうかを判定 ?>
+				<div class="pagenav">
+					<span class="old">
+						<?php next_posts_link('古い記事'); //古いページへのリンクを表示する（引数が1つの場合）?>
+					</span>
 
-		<span class="new">
-			<?php previous_posts_link('新しい記事'); ?>
-		</span>
-	</div>
-<?php  endif;  ?>
-</div><!--container-->
+					<span class="new">
+						<?php previous_posts_link('新しい記事'); //新しいページへのリンクを表示する（引数が1つの場合） ?>
+					</span>
+				</div>
+			<?php  endif;  ?>
+		</div><!--container-->
 
-<footer>
-	<div class="container">
-		<small>Copyright &copy; <?php bloginfo('name'); ?></small>
-	</div>
-</footer>
-<?php wp_footer(); ?>
-</body>
-</html>
+		<footer>
+			<div class="container">
+				<small>Copyright &copy; <?php bloginfo('name'); ?></small>
+			</div>
+		</footer>
+		<?php wp_footer(); ?>
+	</body>
+	</html>
