@@ -21,6 +21,7 @@ body{
 /*記事*/
 article{
 	margin-bottom: 40px;
+	overflow: hidden;
 }
 article h1{
 	margin: 0;
@@ -49,6 +50,13 @@ article h1 a{
 }
 
 /*前後記事へのリンク*/
+.pagenav{
+	overflow: hidden;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	clear: both;
+}
+
 .pagenav a{
 	padding: 5px 10px;
 	border: solid 1px #cccccc;
@@ -121,6 +129,11 @@ article img{
 	margin-left: auto;
 	margin-right: auto;
 }
+.alignright{
+	float: right;
+	margin-bottom: 30px;
+	margin-left: 30px;
+}
 .wp-caption{
 	max-width: 100%;
 }
@@ -129,4 +142,45 @@ article img{
 	color: #666666;
 	font-size: 14px;
 	text-align: center;
+}
+.blogmenu ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.blogmenu .widget{
+	margin-bottom: 30px;
+	padding: 20px;
+	background-color: #e8e8e8;
+}
+.blogmenu .widgettitle{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border-right: solid 10px #4a5f7e;
+	color: #4a5f7e;
+	font-size: 14px;
+}
+.blogmenu li a{
+	display: block;
+	padding: 10px 5px;
+	color: #666666;
+	font-size: 14px;
+	text-decoration: none;
+}
+.blogmenu li a:hover{
+	background-color: #ffffff;
+}
+
+/* 見出し */
+.archive-title{
+	margin-top: 0;
+	margin-bottom: 40px;
+	background-color: #eeeeee;
+	font-size: 14px;
+	font-weight: normal;
+}
+.archive-title i{
+	padding: 15px;
+	background-color: #4a5f7e;
+	color: #ffffff;
 }

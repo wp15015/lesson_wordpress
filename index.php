@@ -22,6 +22,13 @@
 
 	<div class="container">
 
+	<?php if( is_category() ): ?>
+		<h1 class="archive-title">
+		<i class="fa fa-folder-open"></i>
+			「<?php single_cat_title(); ?>」に関する記事
+		</h1>
+	<?php endif; ?>
+
 		<?php if(have_posts()): ?>
 			<?php while(have_posts()): ?>
 				<?php the_post();  ?>
@@ -85,6 +92,13 @@
 					</span>
 				</div>
 			<?php  endif;  ?>
+
+			<div class="blogmenu">
+				<ul>
+					<?php dynamic_sidebar(); ?>
+				</ul>
+			</div>
+
 		</div><!--container-->
 
 		<footer>
